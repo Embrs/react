@@ -1,9 +1,9 @@
 import paths from './paths';
 import Login from 'Pages/Login';
 import Dashboard from 'Pages/Dashboard';
-import Page1 from 'Pages/Info/Page1';
-import Page2 from 'Pages/Info/Page2';
-import Page3 from 'Pages/Info/Page3';
+import Page1 from 'Pages/Page1';
+import Page2 from 'Pages/Page2';
+import Page3 from 'Pages/Page3';
 
 const routes = [
   {
@@ -13,6 +13,7 @@ const routes = [
     breadcrumbName: 'Login',
     role: 'default',
   },
+
   {
     path: paths.Dashboard,
     component: Dashboard,

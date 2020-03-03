@@ -1,10 +1,10 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import './App.scss';
 import RouteHander from './Route';
 import { Navbar } from './Components';
 import routes from './Route/routes';
-import { FormattedMessage } from 'react-intl';
 
 function App({ setLocale }) {
   return (

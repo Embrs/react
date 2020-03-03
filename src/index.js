@@ -6,11 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { setConfig } from 'react-hot-loader';
 import { IntlProvider } from 'react-intl';
+import { Provider } from 'react-redux';
 import en from 'i18n/en.js';
 import zh from 'i18n/zh.js';
+import store from './Store';
 
+// close hot loader warning
 setConfig({
-  showReactDomPatchNotification: false, // close hot loader warning
+  showReactDomPatchNotification: false,
 });
 
 const langs = {
@@ -21,20 +24,22 @@ const langs = {
 
 const Root = () => {
   const [locale, setLocale] = useState(navigator.language);
-  console.log('ll', locale);
+
   let messages = zh;
   if (locale && langs[locale]) {
     messages = langs[locale];
   }
 
   return (
-    <IntlProvider locale={locale} key={locale} defaultLocale="en" messages={messages}>
-      <BrowserRouter>
-        <Switch>
-          <App setLocale={setLocale} />
-        </Switch>
-      </BrowserRouter>
-    </IntlProvider>
+    <Provider store={store}>
+      <IntlProvider locale={locale} key={locale} defaultLocale="en" messages={messages}>
+        <BrowserRouter>
+          <Switch>
+            <App setLocale={setLocale} />
+          </Switch>
+        </BrowserRouter>
+      </IntlProvider>
+    </Provider>
   );
 };
 
